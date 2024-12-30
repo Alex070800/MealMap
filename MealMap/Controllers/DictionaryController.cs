@@ -1,6 +1,8 @@
 using MealMap.Context;
+using MealMap.Dto;
 using MealMap.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MealMap.Controllers
 {
@@ -17,14 +19,14 @@ namespace MealMap.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "G")]
-        public IEnumerable<MealType> Get()
+        [HttpGet("MealType")]
+        public IEnumerable<GetMealTypeResponse> MealType()
         {
             try
             {
                 using (MealMapContext context = new MealMapContext())
                 {
-                    return context.MealTypes.ToList();
+                    return context.MealTypes.Select( o => new GetMealTypeResponse() { Id=o.Id, Name = o.Name, Order = o.Order}).ToList();
                     
                 }
             }

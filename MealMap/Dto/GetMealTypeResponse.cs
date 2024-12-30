@@ -1,12 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using MealMap.Models;
 
-namespace MealMap.Models
+namespace MealMap.Dto
 {
-    /// <summary>
-    /// Тип приема пищи (обед, ужин и тд)
-    /// </summary>
-    [Table("meal_types")]
-    public class MealType
+    public class GetMealTypeResponse
     {
         /// <summary>
         /// Id
@@ -20,5 +16,11 @@ namespace MealMap.Models
         /// Порядкой номер
         /// </summary>
         public int Order { get; set; }
+
+        public static explicit operator GetMealTypeResponse(List<MealType> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
+
