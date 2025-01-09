@@ -19,6 +19,6 @@ namespace MealMap.Dto.Response
         /// <summary>
         /// Члены семьи
         /// </summary>
-        public List<UserInFamilyDto>? Users { get; set; }
+        public List<UserInFamily>? Users { get; set; }
     }
 }

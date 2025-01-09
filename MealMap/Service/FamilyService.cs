@@ -19,7 +19,7 @@ namespace MealMap.Service
                     Id = f.Id,
                     Name = f.Name,
                     MasterName = f?.Master?.Name,
-                    Users = f.Users?.Select(u => new UserInFamilyDto()
+                    Users = f.Users?.Select(u => new UserInFamily()
                     {
                         Name = u.Name,
                         Id = u.Id,
@@ -50,7 +50,7 @@ namespace MealMap.Service
                     Id = family.Id,
                     Name = family.Name,
                     MasterName = family?.Master?.Name,
-                    Users = family.Users?.Select(u => new UserInFamilyDto()
+                    Users = family.Users?.Select(u => new UserInFamily()
                     {
                         Name = u.Name,
                         Id = u.Id,
@@ -104,7 +104,7 @@ namespace MealMap.Service
                         Id = family.Id,
                         Name = family.Name,
                         MasterName = family?.Master?.Name,
-                        Users = family.Users?.Select(u => new UserInFamilyDto()
+                        Users = family.Users?.Select(u => new UserInFamily()
                         {
                             Name = u.Name,
                             Id = u.Id,
@@ -125,6 +125,7 @@ namespace MealMap.Service
             using (MealMapContext context = new MealMapContext())
             {
                context.Families.Where(f => f.Id == id).ExecuteDeleteAsync();
+                context.SaveChanges();
             }
         }
     }

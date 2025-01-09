@@ -10,7 +10,7 @@ namespace MealMap.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ComponentController : ControllerBase
+    public class ProductController : ControllerBase
     {
        
 
@@ -18,7 +18,7 @@ namespace MealMap.Controllers
         private ProductService? productService;
        
 
-        public ComponentController(ILogger<DictionaryController> logger, IServiceProvider serviceProvider)
+        public ProductController(ILogger<DictionaryController> logger, IServiceProvider serviceProvider)
         {
             _logger = logger;
             productService = serviceProvider.GetService<ProductService>();

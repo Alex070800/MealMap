@@ -1,6 +1,6 @@
 ﻿namespace MealMap.Dto
 {
-    public class UserInFamilyDto
+    public class UserInFamily
     {
         /// <summary>
         /// Id

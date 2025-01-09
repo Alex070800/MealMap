@@ -1,8 +1,11 @@
-﻿namespace MealMap.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MealMap.Models
 {
     /// <summary>
     /// Рецепт
     /// </summary>
+    [Table("recipes")]
     public class Recipe
     {
         /// <summary>
@@ -16,15 +19,17 @@
         /// <summary>
         /// Фото (либо ссылка на файл, либо base64, на будущее)
         /// </summary>
-        public string? Photo {  get; set; }  
+        public string? Photo {  get; set; }
         /// <summary>
         /// Продолжительность приготовления в минутах
         /// </summary>
+        /// 
+        [Column("duration_minutes")]
         public int DurationMinutes { get; set; }
         /// <summary>
         /// Список ингридиентов
         /// </summary>
-        public List<Component> Components { get; set; }
+        public virtual List<Component> Components { get; set; }
 
     }
 }

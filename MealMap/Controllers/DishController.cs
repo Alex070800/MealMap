@@ -10,18 +10,18 @@ namespace MealMap.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ComponentController : ControllerBase
+    public class DishController : ControllerBase
     {
        
 
         private readonly ILogger<DictionaryController> _logger;
-        private ProductService? productService;
+        private ProductService? componentService;
        
 
-        public ComponentController(ILogger<DictionaryController> logger, IServiceProvider serviceProvider)
+        public DishController(ILogger<DictionaryController> logger, IServiceProvider serviceProvider)
         {
             _logger = logger;
-            productService = serviceProvider.GetService<ProductService>();
+            componentService = serviceProvider.GetService<ProductService>();
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace MealMap.Controllers
         {
             try
             {
-                return productService.Get();
+                return componentService.Get();
             }
             catch (Exception ex)
             {

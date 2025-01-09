@@ -18,6 +18,9 @@ public class MealMapContext : DbContext
     public DbSet<Family> Families { get; set; }
     public DbSet<User> Users { get; set; }
 
+    public DbSet<Component> Components { get; set; }
+    public DbSet<Recipe> Recipes { get; set; }
+
     public DbSet<Menu> Menu { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -52,5 +55,20 @@ public class MealMapContext : DbContext
            .WithOne()
            .HasForeignKey<Menu>(m => m.Id);
 
+        //recipe <-> component
+        modelBuilder.Entity<Recipe>()
+            .HasMany(r => r.Components)
+            .WithOne()
+            .HasForeignKey("recipe_id");
+
+        modelBuilder.Entity<Component>()
+            .HasOne(c => c.Unit)
+            .WithMany()
+            .HasForeignKey("unit_id");
+
+        modelBuilder.Entity<Component>()
+            .HasOne(c => c.Product)
+            .WithMany()
+            .HasForeignKey("product_id");
     }
 }

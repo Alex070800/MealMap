@@ -12,7 +12,7 @@ builder.Services.AddSingleton<MealTypeService>();
 builder.Services.AddSingleton<UnitService>();
 builder.Services.AddSingleton<ProductService>();
 builder.Services.AddSingleton<FamilyService>();
-builder.Services.AddSingleton<ComponentService>();
+builder.Services.AddSingleton<RecipeService>();
 
 var app = builder.Build();
 
