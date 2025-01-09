@@ -1,13 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using MealMap.Models;
 
-namespace MealMap.Models
+namespace MealMap.Dto.Response
 {
-    /// <summary>
-    /// Категория продукта
-    /// </summary>
-    /// 
-    [Table("categories")]
-    public class Category
+    public class GetUnitsResponse
     {
         /// <summary>
         /// Id
@@ -19,3 +14,4 @@ namespace MealMap.Models
         public string Name { get; set; }
     }
 }
+

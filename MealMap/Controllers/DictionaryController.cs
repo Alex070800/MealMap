@@ -1,6 +1,8 @@
 using MealMap.Context;
-using MealMap.Dto;
+using MealMap.Dto.Response;
 using MealMap.Models;
+using MealMap.Service;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,22 +15,44 @@ namespace MealMap.Controllers
        
 
         private readonly ILogger<DictionaryController> _logger;
+        private MealTypeService? mealTypeService;
+        private UnitService? unitService;
 
-        public DictionaryController(ILogger<DictionaryController> logger)
+        public DictionaryController(ILogger<DictionaryController> logger, IServiceProvider serviceProvider)
         {
             _logger = logger;
+            mealTypeService = serviceProvider.GetService<MealTypeService>();
+            unitService = serviceProvider.GetService<UnitService>();
         }
 
-        [HttpGet("MealType")]
-        public IEnumerable<GetMealTypeResponse> MealType()
+        /// <summary>
+        /// Тип приема пищи
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("MealTypes")]
+        public IEnumerable<GetMealTypesResponse> MealTypes()
         {
             try
             {
-                using (MealMapContext context = new MealMapContext())
-                {
-                    return context.MealTypes.Select( o => new GetMealTypeResponse() { Id=o.Id, Name = o.Name, Order = o.Order}).ToList();
-                    
-                }
+                return mealTypeService.Get();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        
+
+        /// <summary>
+        /// Мера измерения
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("Units")]
+        public IEnumerable<GetUnitsResponse> Units()
+        {
+            try
+            {
+                return unitService.Get();
             }
             catch (Exception ex)
             {

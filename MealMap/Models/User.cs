@@ -1,8 +1,12 @@
-﻿namespace MealMap.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MealMap.Models
 {
     /// <summary>
     /// Пользователь
     /// </summary>
+    /// 
+    [Table("users")]
     public class User
     {
         /// <summary>
@@ -16,7 +20,7 @@
         /// <summary>
         /// Семья
         /// </summary>
-        public Family Family { get; set; }
+        public virtual Family Family { get; set; }
 
         /// <summary>
         /// Логин

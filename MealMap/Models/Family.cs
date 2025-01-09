@@ -1,29 +1,37 @@
-﻿namespace MealMap.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MealMap.Models
 {
     /// <summary>
     /// Семья
     /// </summary>
+    /// 
+    [Table("families")]
     public class Family
     {
         /// <summary>
         /// Id
         /// </summary>
+        [Column("id")]
         public int Id { get; set; }
         /// <summary>
         /// Название семье
         /// </summary>
+
+        [Column("name")]
+
         public string Name { get; set; }
         /// <summary>
         /// Члены семьи
         /// </summary>
-        public List<User> Users { get; set; }
+        public virtual List<User> Users { get; set; }
         /// <summary>
         /// Член семьи, определяющий меню семьи (главный по кухне)
         /// </summary>
-        public User Master { get; set; }
+        public virtual User? Master { get; set; }
         /// <summary>
         /// Меню семьи
         /// </summary>
-        public Menu Menu { get; set; }  
+        public virtual Menu Menu { get; set; }
     }
 }

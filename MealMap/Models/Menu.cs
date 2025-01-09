@@ -1,8 +1,12 @@
-﻿namespace MealMap.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MealMap.Models
 {
     /// <summary>
     /// Меню семьи
     /// </summary>
+    /// 
+    [Table("menu")]
     public class Menu
     {
         /// <summary>
@@ -12,6 +16,6 @@
         /// <summary>
         /// Дни
         /// </summary>
-        public List<Day> Days { get; set; }
+        public virtual List<Day>? Days { get; set; }
     }
 }

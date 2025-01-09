@@ -1,8 +1,8 @@
 ﻿using MealMap.Models;
 
-namespace MealMap.Dto
+namespace MealMap.Dto.Response
 {
-    public class GetMealTypeResponse
+    public class GetMealTypesResponse
     {
         /// <summary>
         /// Id
@@ -17,7 +17,7 @@ namespace MealMap.Dto
         /// </summary>
         public int Order { get; set; }
 
-        public static explicit operator GetMealTypeResponse(List<MealType> v)
+        public static explicit operator GetMealTypesResponse(List<MealType> v)
         {
             throw new NotImplementedException();
         }
