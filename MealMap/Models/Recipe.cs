@@ -11,21 +11,28 @@ namespace MealMap.Models
         /// <summary>
         /// Id
         /// </summary>
+        [Column("id")]
         public int Id { get; set; }
+
         /// <summary>
         /// Название
         /// </summary>
+        [Column("name")]
         public string Name { get; set; }
+
         /// <summary>
         /// Фото (либо ссылка на файл, либо base64, на будущее)
         /// </summary>
+        [Column("photo")]
         public string? Photo {  get; set; }
+
         /// <summary>
         /// Продолжительность приготовления в минутах
         /// </summary>
         /// 
         [Column("duration_minutes")]
         public int DurationMinutes { get; set; }
+
         /// <summary>
         /// Список ингридиентов
         /// </summary>

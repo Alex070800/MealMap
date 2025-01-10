@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MealMap.Controllers
 {
+    /// <summary>
+    /// Словари
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class DictionaryController : ControllerBase

@@ -35,7 +35,16 @@ namespace MealMap.Service
             using (MealMapContext context = new MealMapContext())
             {
                 Family family = new Family() { Name = familyDto.Name };
-                var user = context.Users.FirstOrDefault(u => u.Id == familyDto.MasterId);
+                User? user = null; ;
+                try
+                {
+                     user = context.Users.FirstOrDefault(u => u.Id == familyDto.MasterId);
+
+                }
+                catch(Exception ex) 
+                {
+
+                }
                 if (user != null)
                 {
                     family.Master = user;

@@ -11,14 +11,19 @@ namespace MealMap.Models
         /// <summary>
         /// Id
         /// </summary>
+        [Column("id")]
         public int Id { get; set; }
+
         /// <summary>
         /// Название 
         /// </summary>
+        [Column("name")]
         public string Name { get; set; }
+
         /// <summary>
         /// Порядкой номер
         /// </summary>
+        [Column("order")]
         public int Order { get; set; }
     }
 }
