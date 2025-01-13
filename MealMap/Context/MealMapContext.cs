@@ -10,7 +10,7 @@ public class MealMapContext : DbContext
     public DbSet<Agreement> Agreements { get; set; }
     public DbSet<MealType> MealTypes { get; set; }
     public DbSet<Unit> Units { get; set; }
-    public DbSet<Product> Products { get; set; }   
+    public DbSet<Product> Products { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Family> Families { get; set; }
     public DbSet<User> Users { get; set; }
@@ -18,7 +18,7 @@ public class MealMapContext : DbContext
     public DbSet<Recipe> Recipes { get; set; }
     public DbSet<Menu> Menu { get; set; }
     public DbSet<Day> Days { get; set; }
-    public DbSet<Desk> Desks { get; set; } 
+    public DbSet<Desk> Desks { get; set; }
     public DbSet<Dish> Dishes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -47,12 +47,21 @@ public class MealMapContext : DbContext
             .HasMany(f => f.Users)
             .WithOne(u => u.Family)
             .HasForeignKey("family_id");
+        //modelBuilder.Entity<User>()
+        //    .HasOne(u => u.Family)
+        //    .WithMany(Family => Family.Users)
+        //    .HasForeignKey("family_id");
 
         //family <-> menu
+        //modelBuilder.Entity<Family>()
+        //   .HasOne(f => f.Menu)
+        //   .WithOne()
+        //   .HasForeignKey<Family>(f => f.Id);
         modelBuilder.Entity<Family>()
-           .HasOne(f => f.Menu)
-           .WithOne()
-           .HasForeignKey<Menu>(m => m.Id);
+              .HasOne(f => f.Menu)
+              .WithOne()
+              .HasForeignKey<Menu>(m => m.Id)
+              .IsRequired();
 
         //recipe <-> component
         modelBuilder.Entity<Recipe>()

@@ -24,12 +24,12 @@ namespace MealMap.Models
         /// <summary>
         /// Члены семьи
         /// </summary>
-        public virtual List<User> Users { get; set; }
+        public virtual List<User> Users { get; set; } = new List<User>();
 
         /// <summary>
         /// Член семьи, определяющий меню семьи (главный по кухне)
         /// </summary>
-        public virtual User? Master { get; set; }
+        public virtual User? Master { get; set; } 
 
         /// <summary>
         /// Меню семьи

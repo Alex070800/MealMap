@@ -34,26 +34,24 @@ namespace MealMap.Service
         {
             using (MealMapContext context = new MealMapContext())
             {
-                Family family = new Family() { Name = familyDto.Name };
-                User? user = null; ;
-                try
-                {
-                     user = context.Users.FirstOrDefault(u => u.Id == familyDto.MasterId);
+                Family family = new Family() { Name = familyDto.Name, Menu = new Menu() };
+                User? user = context.Users.FirstOrDefault(u => u.Id == familyDto.MasterId);
 
-                }
-                catch(Exception ex) 
-                {
-
-                }
                 if (user != null)
                 {
                     family.Master = user;
-                    user.Family = family;
+                    family.Users.Add(user);
                 }
+                
+                context.Families.Add(family);
+                
+                context.SaveChanges();
+
+                //Menu menu = new Menu();
+                //family.Menu = menu;
+                //context.Menu.Add(menu);
                 //context.SaveChanges();
 
-                context.Families.Add(family);
-                context.SaveChanges();
                 return new GetFamilyResponse()
                 {
                     Id = family.Id,
@@ -133,7 +131,7 @@ namespace MealMap.Service
         {
             using (MealMapContext context = new MealMapContext())
             {
-               context.Families.Where(f => f.Id == id).ExecuteDeleteAsync();
+                context.Families.Where(f => f.Id == id).ExecuteDeleteAsync();
                 context.SaveChanges();
             }
         }
