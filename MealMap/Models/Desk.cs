@@ -27,6 +27,6 @@ namespace MealMap.Models
         /// <summary>
         /// Все согласия семьи
         /// </summary>
-        public virtual List<Agreement> Agreements { get; set; }
+        public virtual List<Agreement> Agreements { get; set; } = new List<Agreement>();
     }
 }
