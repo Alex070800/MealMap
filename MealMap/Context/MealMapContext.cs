@@ -53,10 +53,6 @@ public class MealMapContext : DbContext
         //    .HasForeignKey("family_id");
 
         //family <-> menu
-        //modelBuilder.Entity<Family>()
-        //   .HasOne(f => f.Menu)
-        //   .WithOne()
-        //   .HasForeignKey<Family>(f => f.Id);
         modelBuilder.Entity<Family>()
               .HasOne(f => f.Menu)
               .WithOne()
@@ -109,13 +105,15 @@ public class MealMapContext : DbContext
         modelBuilder.Entity<Day>()
             .HasMany(d => d.Desks)
             .WithOne()
-            .HasForeignKey("day_id");
+            .HasForeignKey("day_id")
+            .OnDelete(DeleteBehavior.Cascade);
 
         //dish <-> desk
         modelBuilder.Entity<Desk>()
             .HasMany(d => d.Dishs)
             .WithOne()
-            .HasForeignKey("id_desk");
+            .HasForeignKey("id_desk")
+            .OnDelete(DeleteBehavior.Cascade);
 
         //desk <-> mealType
         modelBuilder.Entity<Desk>()

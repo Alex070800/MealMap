@@ -23,6 +23,6 @@ namespace MealMap.Models
         /// <summary>
         /// Список столов в этот день
         /// </summary>
-        public virtual List<Desk> Desks { get; set; } 
+        public virtual List<Desk> Desks { get; set; } = new List<Desk>();
     }
 }

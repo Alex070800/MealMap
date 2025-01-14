@@ -18,11 +18,11 @@ namespace MealMap.Models
         /// Тип приема пищи (завтрак, обед и тд)
         /// </summary>
         public virtual MealType Type { get; set; }
-       
+
         /// <summary>
         /// Список блюд на столе
         /// </summary>
-        public virtual List<Dish> Dishs { get; set; }
+        public virtual List<Dish> Dishs { get; set; } = new List<Dish>();
 
         /// <summary>
         /// Все согласия семьи

@@ -14,11 +14,11 @@ namespace MealMap.Controllers
     public class RecipeController : ControllerBase
     {
       
-        private readonly ILogger<DictionaryController> _logger;
+        private readonly ILogger<RecipeController> _logger;
         private RecipeService? recipeService;
        
 
-        public RecipeController(ILogger<DictionaryController> logger, IServiceProvider serviceProvider)
+        public RecipeController(ILogger<RecipeController> logger, IServiceProvider serviceProvider)
         {
             _logger = logger;
             recipeService = serviceProvider.GetService<RecipeService>();

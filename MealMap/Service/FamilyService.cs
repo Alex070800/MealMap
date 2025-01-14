@@ -47,11 +47,6 @@ namespace MealMap.Service
                 
                 context.SaveChanges();
 
-                //Menu menu = new Menu();
-                //family.Menu = menu;
-                //context.Menu.Add(menu);
-                //context.SaveChanges();
-
                 return new GetFamilyResponse()
                 {
                     Id = family.Id,
@@ -64,7 +59,6 @@ namespace MealMap.Service
                     }).ToList()
                 };
             }
-
         }
 
         public GetFamilyResponse Update(PatchFamilyRequest familyDto)

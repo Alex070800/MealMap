@@ -20,7 +20,10 @@ namespace MealMap.Service
                             .ThenInclude(dish => dish.Recipe)
                     .Include(d => d.Desks)
                         .ThenInclude(desk => desk.Dishs)
-                            .ThenInclude(dish => dish.User).ToList();
+                            .ThenInclude(dish => dish.User)
+                    .Include(d => d.Desks)
+                        .ThenInclude(desk => desk.Type)
+                        .ToList();
                
 
                 return days.Select(d => new GetDayResponse()
@@ -89,8 +92,13 @@ namespace MealMap.Service
         {
             using (MealMapContext context = new MealMapContext())
             {
-                context.Days.Where(d => d.Id == id).ExecuteDeleteAsync();
-                context.SaveChanges();
+                Day day = context.Days.Include(d => d.Desks).ThenInclude(desk => desk.Dishs).FirstOrDefault(d => d.Id == id);
+                if(day != null)
+                {
+                    context.Days.Remove(day);
+                    context.SaveChanges();
+
+                }
             }
         }
     }

@@ -12,11 +12,11 @@ namespace MealMap.Controllers
     {
 
 
-        private readonly ILogger<DictionaryController> _logger;
+        private readonly ILogger<FamilyController> _logger;
         private FamilyService? familyService;
 
 
-        public FamilyController(ILogger<DictionaryController> logger, IServiceProvider serviceProvider)
+        public FamilyController(ILogger<FamilyController> logger, IServiceProvider serviceProvider)
         {
             _logger = logger;
             familyService = serviceProvider.GetService<FamilyService>();

@@ -9,10 +9,10 @@ namespace MealMap.Controllers
     [Route("[controller]")]
     public class DayController : ControllerBase
     {
-        private readonly ILogger<DictionaryController> _logger;
+        private readonly ILogger<DayController> _logger;
         private DayService? dayService;
        
-        public DayController(ILogger<DictionaryController> logger, IServiceProvider serviceProvider)
+        public DayController(ILogger<DayController> logger, IServiceProvider serviceProvider)
         {
             _logger = logger;
             dayService = serviceProvider.GetService<DayService>();
